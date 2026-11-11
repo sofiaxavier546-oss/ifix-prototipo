@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#08285d">
+  <meta name="description" content="iFix, protótipo de marketplace de serviços">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="css/style.css">
+  <title>iFix | Serviços perto de você</title>
+</head>
+<body>
+  <section class="auth-shell" id="authScreen">
+    <aside class="auth-brand">
+      <img src="images/logo-ifix.png" alt="Logo iFix com casa, martelo e detalhes em azul e amarelo">
+      <div class="brand-copy">
+        <span class="kicker">SERVIÇOS COM CONFIANÇA</span>
+        <h1>Quem resolve,<br>você encontra aqui.</h1>
+        <p>Solicite manutenção, compare profissionais e acompanhe tudo em um só lugar.</p>
+        <div class="brand-points">
+          <span>✓ Preço justo</span><span>✓ Profissionais avaliados</span><span>✓ Atendimento próximo</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="auth-panel">
+      <div class="mobile-logo"><img src="images/logo-ifix.png" alt="iFix"></div>
+      <div class="auth-card">
+        <div class="auth-tabs" role="tablist">
+          <button class="tab active" data-auth-view="login" type="button">Entrar</button>
+          <button class="tab" data-auth-view="register" type="button">Criar conta</button>
+        </div>
+
+        <form id="loginForm" class="auth-form active" data-auth-form="login">
+          <span class="kicker">BEM-VINDO DE VOLTA</span>
+          <h2>Acesse sua conta</h2>
+          <p class="form-intro">Use uma conta criada neste navegador ou entre no modo demonstração.</p>
+          <label>E-mail<input type="email" id="loginEmail" placeholder="seuemail@exemplo.com" autocomplete="email" required></label>
+          <label>Senha<span class="password-wrap"><input type="password" id="loginPassword" minlength="6" placeholder="Mínimo de 6 caracteres" autocomplete="current-password" required><button class="show-password" type="button" aria-label="Mostrar senha">👁</button></span></label>
+          <div class="form-meta"><label class="check"><input type="checkbox" id="rememberMe"> Lembrar de mim</label><button class="text-btn" id="forgotBtn" type="button">Esqueci a senha</button></div>
+          <button class="primary full" type="submit">Entrar na iFix</button>
+          <button class="secondary full" id="demoBtn" type="button">Entrar no modo demonstração</button>
+          <p class="prototype-note">Protótipo: os dados ficam somente neste navegador.</p>
+        </form>
+
+        <section class="auth-form" data-auth-form="register">
+          <span class="kicker">PRIMEIRO PASSO</span>
+          <h2>Como deseja usar a iFix?</h2>
+          <p class="form-intro">Escolha o tipo de cadastro. Você poderá alterar as informações depois.</p>
+          <div class="role-grid">
+            <button class="role-card" data-role="cliente" type="button"><span class="role-icon">🏠</span><strong>Sou cliente</strong><small>Quero contratar serviços</small><i>Continuar →</i></button>
+            <button class="role-card provider" data-role="prestador" type="button"><span class="role-icon">🧰</span><strong>Sou prestador</strong><small>Quero oferecer serviços</small><i>Continuar →</i></button>
+          </div>
+          <p class="legal">Ao criar uma conta, você confirma que leu os Termos de Uso e a Política de Privacidade do protótipo.</p>
+        </section>
+
+        <form id="clientForm" class="auth-form" data-auth-form="cliente">
+          <button class="back-auth" data-back-register type="button">← Voltar</button>
+          <span class="kicker">CADASTRO DE CLIENTE</span><h2>Encontre ajuda para sua casa</h2>
+          <div class="two-cols"><label>Nome completo<input name="name" required></label><label>Telefone<input name="phone" inputmode="tel" placeholder="(11) 99999-9999" required></label></div>
+          <label>E-mail<input name="email" type="email" required></label>
+          <div class="two-cols"><label>CEP<input name="cep" inputmode="numeric" maxlength="9" placeholder="00000-000" required></label><label>Cidade<input name="city" value="São Paulo" required></label></div>
+          <label>Senha<input name="password" type="password" minlength="6" required></label>
+          <label class="check terms"><input name="terms" type="checkbox" required> Aceito os termos do protótipo</label>
+          <button class="primary full" type="submit">Criar conta de cliente</button>
+        </form>
+
+        <form id="providerForm" class="auth-form" data-auth-form="prestador">
+          <button class="back-auth" data-back-register type="button">← Voltar</button>
+          <span class="kicker">CADASTRO DE PRESTADOR</span><h2>Comece a receber chamados</h2>
+          <div class="two-cols"><label>Nome ou empresa<input name="name" required></label><label>CPF ou CNPJ<input name="document" inputmode="numeric" required></label></div>
+          <label>E-mail<input name="email" type="email" required></label>
+          <div class="two-cols"><label>Telefone<input name="phone" inputmode="tel" required></label><label>Raio de atendimento<select name="radius"><option>5 km</option><option selected>15 km</option><option>30 km</option><option>50 km</option></select></label></div>
+          <label>Especialidade principal<select name="specialty" required><option value="">Selecione</option><option>Elétrica</option><option>Hidráulica</option><option>Construção</option><option>Montagem</option><option>Jardinagem</option><option>Limpeza</option><option>Refrigeração</option><option>Serviços especiais</option></select></label>
+          <label>Senha<input name="password" type="password" minlength="6" required></label>
+          <label class="check terms"><input name="terms" type="checkbox" required> Confirmo que os dados são demonstrativos</label>
+          <button class="primary full" type="submit">Criar conta de prestador</button>
+        </form>
+      </div>
+    </main>
+  </section>
+
+  <div id="appScreen" hidden>
+    <header class="topbar">
+      <a class="app-logo" href="#inicio"><img src="images/logo-ifix.png" alt="iFix"></a>
+      <nav><a href="#inicio">Início</a><a href="#categorias">Categorias</a><a href="#profissionais">Profissionais</a></nav>
+      <div class="user-menu"><span id="welcomeUser"></span><button class="outline" id="logoutBtn" type="button">Sair</button></div>
+    </header>
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-copy"><span class="kicker">MANUTENÇÃO SEM COMPLICAÇÃO</span><h1>O serviço certo,<br><em>na hora certa.</em></h1><p>Descreva o que precisa, compare profissionais próximos e escolha com segurança.</p><div class="hero-actions"><button class="primary" id="requestBtn" type="button">Solicitar um serviço</button><a class="secondary" href="#profissionais">Ver profissionais</a></div><div class="proof"><span><b>4,9</b> avaliação média</span><span><b>+120</b> profissionais</span><span><b>±20%</b> faixa controlada</span></div></div>
+        <div class="hero-visual"><div class="job-card"><span class="live-dot"></span><small>SERVIÇO EM ANDAMENTO</small><h3>Instalação de chuveiro</h3><p>João Elétrica está a caminho</p><div class="arrival"><b>18 min</b><span>previsão de chegada</span></div><div class="route"><i></i></div></div><div class="mini-card rating">⭐ <b>4,9</b><span>Excelente</span></div><div class="mini-card fair">✓ <b>Preço Justo</b></div></div>
+      </section>
+      <section class="section" id="categorias"><div class="section-head"><div><span class="kicker">ENCONTRE RAPIDAMENTE</span><h2>Do que você precisa?</h2></div></div><div class="category-grid" id="categoryGrid"></div></section>
+      <section class="section tint" id="profissionais"><div class="section-head"><div><span class="kicker">PERTO DE VOCÊ</span><h2>Profissionais disponíveis</h2></div><select id="sortSelect"><option value="score">Recomendados</option><option value="price">Menor preço</option><option value="distance">Mais próximos</option></select></div><div class="pro-grid" id="professionalGrid"></div></section>
+    </main>
+    <footer><img src="images/logo-ifix.png" alt="iFix"><p>Protótipo demonstrativo. Não realiza contratação, validação documental ou pagamento real.</p></footer>
+  </div>
+
+  <div class="modal" id="serviceModal" hidden><div class="backdrop" data-close-modal></div><form class="modal-card" id="serviceForm"><button class="close" type="button" data-close-modal>×</button><span class="kicker">NOVA SOLICITAÇÃO</span><h2>Conte o que precisa</h2><label>Categoria<select id="serviceCategory" required></select></label><label>Descrição<textarea rows="4" required placeholder="Ex.: preciso instalar um chuveiro novo"></textarea></label><div class="two-cols"><label>Urgência<select id="urgency"><option value="0">Normal</option><option value="30">Prioritária (+ R$ 30)</option><option value="60">Emergencial (+ R$ 60)</option></select></label><label>Complexidade<select id="complexity"><option value="1">Simples</option><option value="1.25">Intermediária</option><option value="1.5">Complexa</option><option value="2">Especialista</option></select></label></div><div class="quote"><span>Estimativa do protótipo</span><strong id="quotePrice">R$ 0,00</strong><small id="quoteRange"></small></div><button class="primary full" type="submit">Buscar profissionais</button></form></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/dados.js"></script><script src="js/app.js"></script>
+</body>
+</html>
